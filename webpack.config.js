@@ -18,7 +18,7 @@ const webpackConfig = {
   devtool: 'source-map',
   entry: {
     'app': [
-      __dirname + '/web/static/css/app.scss',
+      __dirname + '/web/static/css/app.sass',
       config.utils_paths.client('app.js')
     ],
     'vendor': config.compiler_vendors
@@ -76,28 +76,42 @@ const webpackConfig = {
         'postcss'
       ]
     }, {
-      test    : /\.scss$/,
+      test    : /\.sass$/,
       exclude : null,
       loaders : [
         'style',
         BASE_CSS_LOADER,
         'postcss',
-        'sass?sourceMap'
+        'sass?sourceMap&indentedSyntax&includePaths[]=' + __dirname +  '/node_modules'
       ]
-    }, {
-      test: /\.sass$/,
-      loader: ExtractTextPlugin.extract(
-        'style',
-        'css!sass?indentedSyntax&includePaths[]=' + __dirname +  '/node_modules'
-      )
     },
-      { test: /\.woff(\?.*)?$/,  loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff' },
-      { test: /\.woff2(\?.*)?$/, loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2' },
-      { test: /\.otf(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype' },
-      { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
-      { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]' },
-      { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
-      { test: /\.(png|jpg)$/,    loader: 'url?limit=8192' }
+    {
+      test: /\.woff(\?.*)?$/,
+      loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff'
+    },
+    {
+      test: /\.woff2(\?.*)?$/,
+      loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2'
+    },
+    {
+      test: /\.otf(\?.*)?$/,
+      loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype'
+    },
+    {
+      test: /\.ttf(\?.*)?$/,
+      loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream'
+    },
+    { test: /\.eot(\?.*)?$/,
+      loader: 'file?prefix=fonts/&name=[path][name].[ext]'
+    },
+    {
+      test: /\.svg(\?.*)?$/,
+      loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml'
+    },
+    {
+      test: /\.(png|jpg)$/,
+      loader: 'url?limit=8192'
+    }
     ]
   },
   plugins:[

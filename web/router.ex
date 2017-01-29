@@ -19,8 +19,15 @@ defmodule LambdaReactor.Router do
     get "/*path", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", LambdaReactor do
-  #   pipe_through :api
-  # end
+  scope "/admin", LambdaReactor.Admin, as: :admin do
+    pipe_through :browser # Use the default browser stack
+
+    get "/*path", PageController, :index
+  end
+
+  scope "/api", LambdaReactor.Api, as: :api do
+    pipe_through :api
+
+    # resources "/products", ProductController, only: [:create, :index, :update, :show, :delete]
+  end
 end

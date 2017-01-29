@@ -1,5 +1,12 @@
 import React, { Component, PropTypes } from 'react'
-import { browserHistory, Router } from 'react-router'
+
+import {
+  applyRouterMiddleware,
+  browserHistory,
+  Router
+} from 'react-router';
+
+import { useScroll } from 'react-router-scroll';
 import { Provider } from 'react-redux'
 
 class AppContainer extends Component {
@@ -15,11 +22,18 @@ class AppContainer extends Component {
   render () {
     const { routes, store } = this.props
 
+    const changeRouteHandler = (prevProps, nextProps) => {
+      return prevProps && (!nextProps.routes[nextProps.routes.length - 1].noScroll
+         || !prevProps.routes[prevProps.routes.length - 1].noScroll) && nextProps.location.pathname !== prevProps.location.pathname;
+
+    };
+
     return (
       <Provider store={store}>
-        <div style={{ height: '100%' }}>
-          <Router history={browserHistory} children={routes} />
-        </div>
+        <Router history={browserHistory} 
+                render={applyRouterMiddleware(useScroll(changeRouteHandler))}
+                children={routes}
+        />
       </Provider>
     )
   }

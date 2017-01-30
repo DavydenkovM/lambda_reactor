@@ -10,7 +10,7 @@ const __DEV__ = config.globals.__DEV__
 const __PROD__ = config.globals.__PROD__
 const __TEST__ = config.globals.__TEST__
 
-const BASE_CSS_LOADER = 'css?sourceMap&-minimize'
+const BASE_CSS_LOADER = 'css?sourceMap&-minimize&modules&importLoaders=3&localIdentName=[name]__[local]__[hash:base64:5]'
 
 const webpackConfig = {
   name    : 'client',
@@ -36,7 +36,12 @@ const webpackConfig = {
   },
   resolve: {
     root: config.utils_paths.client(),
-    extensions : ['', '.js', '.jsx']
+    extensions : ['', '.js', '.jsx'],
+    alias: {
+      'components': config.utils_paths.client('components'),
+      'containers': config.utils_paths.client('containers'),
+      'styles': config.utils_paths.base('web/static/styles')
+    }
   },
   sassLoader: {
     includePaths : config.utils_paths.client('styles')

@@ -2,7 +2,7 @@ import 'phoenix'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import createStore from './store/createStore'
-import AppContainer from './containers/AppContainer'
+import AppContainer from 'containers/AppContainer'
 import RedBox from 'redbox-react'
 
 import routes from './routes'

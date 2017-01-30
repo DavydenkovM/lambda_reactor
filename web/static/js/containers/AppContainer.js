@@ -1,13 +1,11 @@
 import React, { Component, PropTypes } from 'react'
-
-import {
-  applyRouterMiddleware,
-  browserHistory,
-  Router
-} from 'react-router';
-
+import { applyRouterMiddleware, browserHistory, Router } from 'react-router';
 import { useScroll } from 'react-router-scroll';
 import { Provider } from 'react-redux'
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class AppContainer extends Component {
   static propTypes = {
@@ -29,12 +27,14 @@ class AppContainer extends Component {
     };
 
     return (
-      <Provider store={store}>
-        <Router history={browserHistory} 
-                render={applyRouterMiddleware(useScroll(changeRouteHandler))}
-                children={routes}
-        />
-      </Provider>
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+        <Provider store={store}>
+          <Router history={browserHistory} 
+                  render={applyRouterMiddleware(useScroll(changeRouteHandler))}
+                  children={routes}
+          />
+        </Provider>
+      </MuiThemeProvider>
     )
   }
 }

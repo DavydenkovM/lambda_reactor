@@ -39,8 +39,7 @@ const webpackConfig = {
     extensions : ['', '.js', '.jsx'],
     alias: {
       'components': config.utils_paths.client('components'),
-      'containers': config.utils_paths.client('containers'),
-      'styles': config.utils_paths.base('web/static/styles')
+      'containers': config.utils_paths.client('containers')
     }
   },
   sassLoader: {
@@ -64,62 +63,63 @@ const webpackConfig = {
     })
   ],
   module: {
-    loaders: [{
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: config.compiler_babel
-    }, {
-      test   : /\.json$/,
-      loader : 'json'
-    }, {
-      test    : /\.css$/,
-      exclude : null,
-      loaders : [
-        'style',
-        BASE_CSS_LOADER,
-        'postcss'
-      ]
-    }, {
-      test    : /\.sass$/,
-      exclude : null,
-      loaders : [
-        'style',
-        BASE_CSS_LOADER,
-        'postcss',
-        'sass?sourceMap&indentedSyntax&includePaths[]=' + __dirname +  '/node_modules'
-      ]
-    },
-    {
-      test: /\.woff(\?.*)?$/,
-      loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff'
-    },
-    {
-      test: /\.woff2(\?.*)?$/,
-      loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2'
-    },
-    {
-      test: /\.otf(\?.*)?$/,
-      loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype'
-    },
-    {
-      test: /\.ttf(\?.*)?$/,
-      loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream'
-    },
-    { test: /\.eot(\?.*)?$/,
-      loader: 'file?prefix=fonts/&name=[path][name].[ext]'
-    },
-    {
-      test: /\.svg(\?.*)?$/,
-      loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml'
-    },
-    {
-      test: /\.(png|jpg)$/,
-      loader: 'url?limit=8192'
-    }
+    loaders: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: config.compiler_babel
+      }, {
+        test   : /\.json$/,
+        loader : 'json'
+      }, {
+        test    : /\.css$/,
+        exclude : null,
+        loaders : [
+          'style',
+          BASE_CSS_LOADER,
+          'postcss'
+        ]
+      }, {
+        test    : /\.sass$/,
+        exclude : null,
+        loaders : [
+          'style',
+          BASE_CSS_LOADER,
+          'postcss',
+          'sass?sourceMap&indentedSyntax&includePaths[]=' + __dirname +  '/node_modules'
+        ]
+      },
+      {
+        test: /\.woff(\?.*)?$/,
+        loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.woff2(\?.*)?$/,
+        loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2'
+      },
+      {
+        test: /\.otf(\?.*)?$/,
+        loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype'
+      },
+      {
+        test: /\.ttf(\?.*)?$/,
+        loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream'
+      },
+      { test: /\.eot(\?.*)?$/,
+        loader: 'file?prefix=fonts/&name=[path][name].[ext]'
+      },
+      {
+        test: /\.svg(\?.*)?$/,
+        loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml'
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url?limit=8192'
+      }
     ]
   },
-  plugins:[
+  plugins: [
     new webpack.DefinePlugin(config.globals),
   ]
 }

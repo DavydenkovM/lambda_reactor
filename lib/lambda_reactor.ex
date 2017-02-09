@@ -7,6 +7,7 @@ defmodule LambdaReactor do
   """
   use Application
   alias LambdaReactor.Endpoint
+  alias LambdaReactor.Repo
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
@@ -17,6 +18,7 @@ defmodule LambdaReactor do
     children = [
       # Start the endpoint when the application starts
       supervisor(Endpoint, []),
+      worker(Repo, [])
       # Start your own worker by calling: LambdaReactor.Worker.start_link(arg1, arg2, arg3)
       # worker(LambdaReactor.Worker, [arg1, arg2, arg3]),
     ]

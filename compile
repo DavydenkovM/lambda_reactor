@@ -1,3 +1,0 @@
-info "****** Building Phoenix static assets"
-npm run deploy:prod
-mix phoenix.digest

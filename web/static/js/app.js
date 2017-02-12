@@ -16,7 +16,7 @@ const store = createStore(initialState)
 // ========================================================
 // Render Setup
 // ========================================================
-const MOUNT_NODE = document.getElementById('root')
+const MOUNT_NODE = document.getElementById('index')
 
 
 let render = () => {
@@ -25,6 +25,7 @@ let render = () => {
     MOUNT_NODE
   )
 }
+
 
 // This code is excluded from production bundle
 if (__DEV__) {

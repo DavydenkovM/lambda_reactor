@@ -3,6 +3,7 @@ defmodule LambdaReactor.UserSocket do
 
   ## Channels
   # channel "room:*", LambdaReactor.RoomChannel
+  channel "visitors", LambdaReactor.VisitorsChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

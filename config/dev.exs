@@ -12,7 +12,22 @@ config :lambda_reactor, LambdaReactor.Endpoint,
   code_reloader: true,
   cache_static_lookup: false,
   check_origin: false,
-  watchers: [node: ["node_modules/webpack/bin/webpack.js", "--watch-stdin", "--progress", "--colors"]]
+  watchers: [
+    {
+      "node", ["node_modules/webpack/bin/webpack.js",
+       "--watch-stdin",
+       "--progress",
+       "--colors"]
+    },
+    {
+      "node", ["node_modules/webpack/bin/webpack.js",
+       "--watch-stdin",
+       "--progress",
+       "--colors",
+       "--config",
+       "webpack.server.config.js"]
+    }
+  ]
 
 
 # Watch static and templates for browser reloading.

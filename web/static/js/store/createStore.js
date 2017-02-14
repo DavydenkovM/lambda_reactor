@@ -4,6 +4,9 @@ import { browserHistory } from 'react-router'
 import makeRootReducer from './reducers'
 import { updateLocation } from './location'
 
+
+import WSActions from "actions/ws";
+
 export default (initialState = {}) => {
   // ======================================================
   // Middleware Configuration
@@ -16,12 +19,12 @@ export default (initialState = {}) => {
   const enhancers = []
   let composeEnhancers = compose
 
-  if (__DEV__) {
-    const composeWithDevToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    if (typeof composeWithDevToolsExtension === 'function') {
-      composeEnhancers = composeWithDevToolsExtension
-    }
-  }
+  // if (__DEV__) {
+  //   const composeWithDevToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  //   if (typeof composeWithDevToolsExtension === 'function') {
+  //     composeEnhancers = composeWithDevToolsExtension
+  //   }
+  // }
 
   // ======================================================
   // Store Instantiation and HMR Setup
@@ -34,16 +37,22 @@ export default (initialState = {}) => {
       ...enhancers
     )
   )
-  store.asyncReducers = {}
+  store.asyncReducers = {
+  }
 
   // To unsubscribe, invoke `store.unsubscribeHistory()` anytime
-  store.unsubscribeHistory = browserHistory.listen(updateLocation(store))
+  // store.unsubscribeHistory = browserHistory.listen(updateLocation(store))
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {
       const reducers = require('./reducers').default
       store.replaceReducer(reducers(store.asyncReducers))
     })
+  }
+
+  if (typeof window !== "undefined") {
+    store.dispatch(WSActions.socket_connect());
+    store.dispatch(WSActions.channel_join("visitors"));
   }
 
   return store

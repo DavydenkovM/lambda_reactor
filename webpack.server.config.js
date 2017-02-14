@@ -22,14 +22,14 @@ const plugins = {
 }
 
 module.exports = {
-  entry: [
-    "./web/static/js/app.js",
-    "./web/static/styles/app.sass"
-  ],
+  entry: {
+    component: "./web/static/js/containers/AppContainer.js"
+  },
   output: {
-    path: "./priv/static",
-    filename: "js/app.js",
-    publicPath: "/",
+    path: "./priv/static/server/js",
+    filename: "app.js",
+    library: "app",
+    libraryTarget: "commonjs2"
   },
   module: {
     rules: [{
@@ -133,6 +133,5 @@ module.exports = {
     }, config.globals)),
     new ExtractTextPlugin("css/app.css"),
     new CopyPlugin([{from: "./web/static/assets"}]),
-    new Webpack.IgnorePlugin(/jsdom$/)
   ].concat(plugins[env])
 }

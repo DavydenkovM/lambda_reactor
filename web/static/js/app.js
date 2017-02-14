@@ -1,27 +1,18 @@
 import 'phoenix'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
-import createStore from './store/createStore'
 import AppContainer from 'containers/AppContainer'
 import RedBox from 'redbox-react'
-
-import routes from './routes'
-
-// ========================================================
-// Store Instantiation
-// ========================================================
-const initialState = window.___INITIAL_STATE__
-const store = createStore(initialState)
 
 // ========================================================
 // Render Setup
 // ========================================================
 const MOUNT_NODE = document.getElementById('index')
 
-
 let render = () => {
-  ReactDOM.render( 
-    <AppContainer store={store} routes={routes} />, 
+  ReactDOM.render(
+    <AppContainer />,
     MOUNT_NODE
   )
 }

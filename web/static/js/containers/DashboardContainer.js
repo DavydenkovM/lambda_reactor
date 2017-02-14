@@ -8,8 +8,9 @@ import { bindActionCreators  } from 'redux';
 // import Footer from 'components/shared/Footer/Footer';
 
 import css from './DashboardContainer.sass';
-// import RaisedButton from 'material-ui/RaisedButton';
+// import RaisedButtonfrom 'material-ui/RaisedButton';
 import AppBar from 'material-ui/AppBar';
+import Visitors from '../components/Visitors/Visitors';
 
 function select(state) {
   return {
@@ -21,6 +22,7 @@ class DashboardContainer extends React.Component {
     return (
       <div className='qwe'>
       <AppBar title="\m/" />
+      <Visitors />
 
       </div>
     );

@@ -28,6 +28,7 @@ defmodule LambdaReactor.Mixfile do
        :ecto,
        :postgrex,
        :phoenix_ecto,
+       :std_json_io,
        :comeonin
      ]]
   end
@@ -42,7 +43,7 @@ defmodule LambdaReactor.Mixfile do
   defp deps do
     [
      {:comeonin, "~> 3.0"},
-     {:cowboy, "~> 1.0"},
+     {:cowboy, "~> 1.1.2", override: true},
      {:credo, "~> 0.5", only: [:dev, :test]},
      {:distillery, "~> 1.0"},
      {:ecto, "~> 2.1.0"},
@@ -54,6 +55,8 @@ defmodule LambdaReactor.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:phoenix_pubsub, "~> 1.0"},
      {:postgrex, "~> 0.13.0", override: true},
+     {:poison, "~> 3.0.0", override: true},
+     {:std_json_io, "~> 0.1.0"},
      {:quick_alias, "~> 0.1.0", only: :dev}
    ]
   end

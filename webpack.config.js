@@ -1,10 +1,10 @@
-// webpack.config.js
-const env = process.env.MIX_ENV === "prod" ? "production" : "development";
 const Webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const Autoprefixer = require("autoprefixer");
 const postcssCssnext = require("postcss-cssnext");
+
+const env = process.env.MIX_ENV === "prod" ? "production" : "development";
 
 const config = require('./config');
 
@@ -22,15 +22,6 @@ const plugins = {
 }
 
 module.exports = {
-  entry: [
-    "./web/static/js/app.js",
-    "./web/static/styles/app.sass"
-  ],
-  output: {
-    path: "./priv/static",
-    filename: "js/app.js",
-    publicPath: "/",
-  },
   module: {
     rules: [{
       test: /\.js$/,
@@ -43,7 +34,7 @@ module.exports = {
     }, {
       test: /\.sass/,
       use: ExtractTextPlugin.extract({
-        fallback: "style-loader", 
+        fallback: "style-loader",
         use: [
         {
           loader: "css-loader",
@@ -65,9 +56,9 @@ module.exports = {
             ],
           }
         },
-        {
-          loader: "sass-loader"
-        }
+          {
+            loader: "sass-loader"
+          }
         ]
       })
     }, {
@@ -131,7 +122,7 @@ module.exports = {
         "NODE_ENV": JSON.stringify(env),
       },
     }, config.globals)),
-    new ExtractTextPlugin("css/app.css"),
+    new ExtractTextPlugin("css/course_page.css"),
     new CopyPlugin([{from: "./web/static/assets"}]),
     new Webpack.IgnorePlugin(/jsdom$/)
   ].concat(plugins[env])

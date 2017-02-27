@@ -19,7 +19,6 @@ class AppContainer extends Component {
     // const changeRouteHandler = (prevProps, nextProps) => {
     //   return prevProps && (!nextProps.routes[nextProps.routes.length - 1].noScroll
     //       || !prevProps.routes[prevProps.routes.length - 1].noScroll) && nextProps.location.pathname !== prevProps.location.pathname;
-
     // };
 
     let initialState, history, router;

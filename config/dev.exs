@@ -6,29 +6,26 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
+
+webpack = fn(name) ->
+  {"node", [
+    "node_modules/webpack/bin/webpack.js",
+    "--watch-stdin",
+    "--env.dev",
+    "--hot",
+    "--colors",
+    "--config",
+    "webpack.#{name}.config.js"
+  ]}
+end
+
 config :lambda_reactor, LambdaReactor.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   cache_static_lookup: false,
   check_origin: false,
-  watchers: [
-    {
-      "node", ["node_modules/webpack/bin/webpack.js",
-       "--watch-stdin",
-       "--progress",
-       "--colors"]
-    },
-    {
-      "node", ["node_modules/webpack/bin/webpack.js",
-       "--watch-stdin",
-       "--progress",
-       "--colors",
-       "--config",
-       "webpack.server.config.js"]
-    }
-  ]
-
+  watchers: ["app", "app.server"] |> Enum.map(&(webpack.(&1)))
 
 # Watch static and templates for browser reloading.
 config :lambda_reactor, LambdaReactor.Endpoint,

@@ -8,6 +8,7 @@ import RedBox from 'redbox-react'
 // ========================================================
 // Render Setup
 // ========================================================
+
 const MOUNT_NODE = document.getElementById('index')
 
 let render = () => {
@@ -17,9 +18,10 @@ let render = () => {
   )
 }
 
-
 // This code is excluded from production bundle
-if (__DEV__) {
+console.log(__DEV__);
+
+// if (__DEV__) {
   if (module.hot) {
     // Development render functions
     const renderApp = render
@@ -45,7 +47,7 @@ if (__DEV__) {
       })
     )
   }
-}
+// }
 
 // ========================================================
 // Go!

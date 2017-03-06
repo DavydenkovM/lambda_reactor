@@ -13,6 +13,7 @@ webpackConfig.output =
       path: "./priv/static/js",
       filename: "[name].js",
       publicPath: "/",
+      pathinfo: true,
   }
 
 module.exports = webpackConfig

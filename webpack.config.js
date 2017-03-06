@@ -22,6 +22,7 @@ const plugins = {
 }
 
 module.exports = {
+  devtool: 'eval',
   module: {
     rules: [{
       test: /\.js$/,
@@ -36,26 +37,26 @@ module.exports = {
       use: ExtractTextPlugin.extract({
         fallback: "style-loader",
         use: [
-        {
-          loader: "css-loader",
-          options: {
-            modules: true,
-            importLoaders: 1,
-            localIdentName: "[hash:base64]"
-          }
-        },
-        {
-          loader: "postcss-loader",
-          options: {
-            sourceMap: true,
-            plugins: () => [
-              postcssCssnext({
-                browsers: ['last 2 versions', 'ie >= 9'],
-                compress: true,
-              })
-            ],
-          }
-        },
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: "[hash:base64]"
+            }
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              sourceMap: true,
+              plugins: () => [
+                postcssCssnext({
+                  browsers: ['last 2 versions', 'ie >= 9'],
+                  compress: true,
+                })
+              ],
+            }
+          },
           {
             loader: "sass-loader"
           }
@@ -122,8 +123,11 @@ module.exports = {
         "NODE_ENV": JSON.stringify(env),
       },
     }, config.globals)),
-    new ExtractTextPlugin("css/course_page.css"),
-    new CopyPlugin([{from: "./web/static/assets"}]),
-    new Webpack.IgnorePlugin(/jsdom$/)
+    new ExtractTextPlugin("css/app.css"),
+    new Webpack.optimize.CommonsChunkPlugin({
+      names: [],
+    }),
+
+    new CopyPlugin([{from: "./web/static/assets"}])
   ].concat(plugins[env])
 }

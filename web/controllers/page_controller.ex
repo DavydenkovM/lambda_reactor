@@ -9,12 +9,12 @@ defmodule LambdaReactor.PageController do
       "initial_state" => initial_state
     }
 
-    # result = LambdaReactor.ReactIO.json_call!(%{
-    #   component: "./priv/static/server/app.js",
-    #   props: props,
-    # })
+    result = LambdaReactor.ReactIO.json_call!(%{
+      component: "./priv/static/server/app.js",
+      props: props,
+    })
 
-    # render(conn, "index.html", html: result["html"], props: initial_state)
-    render(conn, "index_client.html")
+    render(conn, "index.html", html: result["html"], props: initial_state)
+    # render(conn, "index_client.html")
   end
 end

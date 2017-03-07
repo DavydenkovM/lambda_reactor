@@ -20,6 +20,7 @@ let render = () => {
 
 // This code is excluded from production bundle
 console.log(__DEV__);
+debugger;
 
 // if (__DEV__) {
   if (module.hot) {

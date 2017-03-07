@@ -5,7 +5,6 @@ import { useScroll } from 'react-router-scroll';
 import DashboardContainer from './containers/DashboardContainer';
 import WorkshopLandingContainer from './containers/WorkshopLandingContainer';
 
-
 export default (
   <Route path="/">
     <IndexRoute component={ DashboardContainer } />

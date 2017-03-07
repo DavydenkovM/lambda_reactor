@@ -5,6 +5,7 @@ const Autoprefixer = require("autoprefixer");
 const postcssCssnext = require("postcss-cssnext");
 
 const env = process.env.MIX_ENV === "prod" ? "production" : "development";
+const {resolve} = require('path')
 
 const config = require('./config');
 
@@ -109,11 +110,11 @@ module.exports = {
   resolve: {
     extensions: [".js", ".sass", ".css"],
     modules: [
-      __dirname + "/web/static/js",
+      __dirname + "/js",
       "node_modules"
     ],
     alias: {
-      styles: __dirname + "/web/static/styles"
+      styles: __dirname + "/styles"
     }
   },
   plugins: [
@@ -128,6 +129,6 @@ module.exports = {
       names: [],
     }),
 
-    new CopyPlugin([{from: "./web/static/assets"}])
+    new CopyPlugin([{from: resolve(__dirname, "./assets")}])
   ].concat(plugins[env])
 }

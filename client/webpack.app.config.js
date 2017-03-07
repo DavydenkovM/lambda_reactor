@@ -1,10 +1,11 @@
 const webpackConfig = require('./webpack.config')
+const {resolve} = require('path')
 
 webpackConfig.entry =
   {
     app: [
-        "./web/static/js/app.js",
-        "./web/static/styles/app.sass"
+        resolve(__dirname, "./js/app.js"),
+        resolve(__dirname, "./styles/app.sass")
     ]
   }
 

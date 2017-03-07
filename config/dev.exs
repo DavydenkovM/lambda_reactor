@@ -9,13 +9,13 @@ use Mix.Config
 
 webpack = fn(name) ->
   {"node", [
-    "node_modules/webpack/bin/webpack.js",
+    "client/node_modules/webpack/bin/webpack.js",
     "--watch-stdin",
     "--env.dev",
     "--hot",
     "--colors",
     "--config",
-    "webpack.#{name}.config.js"
+    "client/webpack.#{name}.config.js"
   ]}
 end
 

@@ -1,10 +1,12 @@
 const webpackConfig = require('./webpack.config')
+const {resolve} = require('path')
+
 webpackConfig.externals = {}
 webpackConfig.target = 'node'
 
 webpackConfig.entry =
   {
-    app: "./web/static/js/containers/AppContainer.js"
+    app: resolve(__dirname, "./js/containers/AppContainer.js")
   }
 
 webpackConfig.output =

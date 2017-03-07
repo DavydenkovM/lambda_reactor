@@ -9,13 +9,14 @@ use Mix.Config
 
 webpack = fn(name) ->
   {"node", [
-    "client/node_modules/webpack/bin/webpack.js",
+    "node_modules/webpack/bin/webpack.js",
     "--watch-stdin",
     "--env.dev",
     "--hot",
     "--colors",
     "--config",
-    "client/webpack.#{name}.config.js"
+    "webpack.#{name}.config.js",
+    cd: Path.expand("../client", __DIR__)
   ]}
 end
 

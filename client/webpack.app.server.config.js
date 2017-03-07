@@ -11,7 +11,7 @@ webpackConfig.entry =
 
 webpackConfig.output =
   {
-    path: "./priv/static/server/js",
+    path: resolve(__dirname, "../priv/static/server"),
     filename: "[name].js",
     library: "app",
     libraryTarget: "commonjs2"

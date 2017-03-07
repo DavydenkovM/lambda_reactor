@@ -11,7 +11,7 @@ webpackConfig.entry =
 
 webpackConfig.output =
   {
-      path: "./priv/static/js",
+      path: resolve(__dirname, "../priv/static/"),
       filename: "[name].js",
       publicPath: "/",
       pathinfo: true,

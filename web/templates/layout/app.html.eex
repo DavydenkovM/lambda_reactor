@@ -8,11 +8,11 @@
     <meta name="author" content="">
 
     <title>Hi there</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>"></link>
   </head>
 
   <body>
     <%= render @view_module, @view_template, assigns %>
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/app.js") %>"></script>
   </body>
 </html>

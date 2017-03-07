@@ -124,7 +124,7 @@ module.exports = {
         "NODE_ENV": JSON.stringify(env),
       },
     }, config.globals)),
-    new ExtractTextPlugin("css/app.css"),
+    new ExtractTextPlugin("/css/[name].css"),
     new Webpack.optimize.CommonsChunkPlugin({
       names: [],
     }),

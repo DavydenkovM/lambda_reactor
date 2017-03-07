@@ -52,11 +52,11 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "webpack --env.prod -p",
+    "build": "webpack --env.prod -p --config webpack.app.config.js",
     "prebuild:dev": "rimraf dist",
     "build:dev": "webpack --env.dev",
     "start": "http-server",
-    "dev": "webpack-dev-server --env.dev",
+    "dev": "webpack --env.dev --config webpack.app.config.js",
     "debug": "node-nightly --inspect --debug-brk ../node_modules/.bin/webpack --env.debug --config webpack.app.config.js",
     "debug:dev": "npm run debug -- --env.dev",
     "debug:prod": "npm run debug -- --env.prod",

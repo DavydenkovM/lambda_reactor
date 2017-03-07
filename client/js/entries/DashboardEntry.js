@@ -2,7 +2,7 @@ import 'phoenix'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import AppContainer from 'containers/AppContainer'
+import DashboardEntry from 'entries/DashboardServerEntry'
 import RedBox from 'redbox-react'
 
 // ========================================================
@@ -13,15 +13,13 @@ const MOUNT_NODE = document.getElementById('index')
 
 let render = () => {
   ReactDOM.render(
-    <AppContainer />,
+    <DashboardEntry />,
     MOUNT_NODE
   )
 }
 
 // This code is excluded from production bundle
-console.log(__DEV__);
-
-// if (__DEV__) {
+if (__DEV__) {
   if (module.hot) {
     // Development render functions
     const renderApp = render
@@ -40,14 +38,14 @@ console.log(__DEV__);
     }
 
     // Setup hot module replacement
-    module.hot.accept('./routes', () =>
+    module.hot.accept('../routes', () =>
       setImmediate(() => {
         ReactDOM.unmountComponentAtNode(MOUNT_NODE)
         render()
       })
     )
   }
-// }
+}
 
 // ========================================================
 // Go!

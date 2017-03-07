@@ -10,17 +10,7 @@ debug('Creating default configuration.')
 // ========================================================
 
 const config = {
-  env : process.env.NODE_ENV || 'development',
-
-  // ----------------------------------
-  // Project Structure
-  // ----------------------------------
-  path_base  : path.resolve(__dirname, '.'),
-  dir_client : 'web/static/js',
-  dir_dist   : 'dist',
-  dir_public : 'priv/static',
-  dir_server : 'server',
-  dir_test   : 'tests',
+  env : process.env.NODE_ENV || process.env.MIX_ENV || 'development',
 
   // ----------------------------------
   // Server Configuration

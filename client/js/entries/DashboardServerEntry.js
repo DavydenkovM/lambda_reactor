@@ -10,7 +10,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import routes from '../routes'
 import createStore from "../store/createStore";
 
-class AppContainer extends Component {
+class DashboardServerEntry extends Component {
   shouldComponentUpdate () {
     return false
   }
@@ -51,4 +51,4 @@ class AppContainer extends Component {
   }
 }
 
-export default AppContainer
+export default DashboardServerEntry

@@ -10,7 +10,7 @@ defmodule LambdaReactor.PageController do
     }
 
     result = LambdaReactor.ReactIO.json_call!(%{
-      component: "./priv/static/server/app.js",
+      component: "./priv/static/server/js/DashboardEntry.js",
       props: props,
     })
 

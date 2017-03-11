@@ -1,0 +1,4 @@
+<div id="index"><%= raw html(@state_pid) %></div>
+<script>__INITIAL_STATE__=<%= props(@state_pid) |> Poison.encode! |> raw %></script>
+<%= Agent.stop(@state_pid) %>
+

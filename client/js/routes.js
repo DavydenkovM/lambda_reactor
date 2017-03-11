@@ -8,6 +8,10 @@ import WorkshopLandingContainer from './containers/WorkshopLandingContainer';
 export default (
   <Route path="/">
     <IndexRoute component={ DashboardContainer } />
+    <Route
+      path="/dashboard"
+      component={ DashboardContainer }
+    />
 
     <Route
       path="/workshops/:workshop_id/landing"

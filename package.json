@@ -12,14 +12,12 @@
   },
   "author": "Davydenkov Mihail",
   "scripts": {
-    "postinstall": "cd client && npm install",
-    "test": "cd client && npm test"
-  },
-  "scripts": {
     "build": "cd client && npm run build",
     "start": "cd client && npm start",
     "dev": "cd client && npm run dev",
     "debug": "cd client && npm run debug"
+  },
+  "dependencies": {
+    "redux-form": "^6.5.0"
   }
 }
-

@@ -1,0 +1,2 @@
+<div id="index"></div>
+<%= Agent.stop(@state_pid) %>

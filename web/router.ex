@@ -42,6 +42,7 @@ defmodule LambdaReactor.Router do
   scope "/", LambdaReactor do
     pipe_through :browser # Use the default browser stack
 
+    get "/dashboard", DashboardController, :index
     get "/*path", PageController, :index
   end
 end
